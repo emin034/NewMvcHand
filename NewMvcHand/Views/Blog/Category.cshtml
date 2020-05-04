@@ -1,0 +1,17 @@
+﻿@model NewMvcHand.Models.ModelMix
+
+<div class="category-style-one sidebar-padd mar-1">
+    <div class="inner-title">
+        <h3>kateqoriyalar</h3>
+    </div>
+    @foreach (var item in Model.Categories)
+    {
+        <ul class="list">
+
+
+
+            <li><a href="#" class="clearfix"><span class="float_left">@item.Name </span><span class="float_right">@Model.Galleries.Where(x => x.TypeId == item.TypeId).Count()</span></a></li>
+
+        </ul>
+    }
+</div> <!-- End of .sidebar_categories -->

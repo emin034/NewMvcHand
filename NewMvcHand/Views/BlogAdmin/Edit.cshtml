@@ -1,0 +1,71 @@
+﻿@model NewMvcHand.Models.Gallery
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Məhsullar Dəyişmə Səyfəsi
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                @using (Html.BeginForm("Edit", "BlogAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <label for="email_address">Məhsul Şəkil</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="file" id="File" name="File" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" class="form-control" />
+                        </div>
+                    </div>
+                    <label for="email_address">Məhsulun Adı</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @maxlength = "100", @required = "reguired" } })
+                        </div>
+                    </div>
+                    <label for="password">Haqqında</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.EditorFor(model => model.About, new { htmlAttributes = new { @class = "form-control", @maxlength = "250", @required = "reguired" } })
+                        </div>
+                    </div>
+                    <label for="password">Dəyişmə Vaxtı</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.EditorFor(model => model.ModifyDate, new { htmlAttributes = new { @class = "form-control", @required = "reguired" } })
+                        </div>
+                    </div>
+
+                    <label for="password">Dəyişdirən </label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.EditorFor(model => model.AddedBy, new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired", @type = "password" } })
+                        </div>
+                    </div>
+
+
+                    <br>
+                    <div align="center">
+                        <input type="submit" class="btn btn-success m-t-15 waves-effect" value="Dəyişiklikləri Əlavə Et">
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

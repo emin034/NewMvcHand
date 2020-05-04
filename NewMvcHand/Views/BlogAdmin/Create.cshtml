@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Mehsul Elave Seyfesı
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+
+
+                <div class="btn-group bootstrap-select" style="float:right">
+
+
+                    @foreach (var item in Model.Galleries.Select(x => x.TypeId))
+                    {
+                        <select>
+
+                            <option value="test">@item. </option>
+                        </select>
+                    }
+
+                </div>
+
+
+                @using (Html.BeginForm("Create", "BlogAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                    <label for="email_address">Blogger Səkil</label>
+                    <div class="form-group">
+
+                        <div class="form-line">
+                            <input type="file" id="File" name="File" accept=".jpg,.JPG,.PNG,.png,.jpeg,.JPEG" class="form-control" />
+                        </div>
+
+                    </div>
+
+                    <label for="email_address">Mehsul Adi</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.EditorFor(model => model.Categories.Select(x => x.Name).Single(), new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } });l
+                        </div>
+                    </div>
+                    <label for="password">Email</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.EditorFor(model => model.Galleries.Select(x => x.AddedBy).Single(), new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired" } })
+                        </div>
+                    </div>
+                    <label for="password"> Haqqında</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.EditorFor(model => model.Galleries.Select(x => x.About).Single(), new { htmlAttributes = new { @class = "form-control", @maxlength = "150", @required = "reguired" } })
+                        </div>
+                    </div>
+
+
+                    <label for="password">Zaman </label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            @Html.EditorFor(model => model.Galleries.Select(x => x.AddedDate).Single(), new { htmlAttributes = new { @class = "form-control", @maxlength = "50", @required = "reguired", @type = "password" } })
+                        </div>
+                    </div>
+
+
+                    <br>
+                    <div align="center">
+                        <input type="submit" class="btn btn-success m-t-15 waves-effect" value="OK">
+
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
